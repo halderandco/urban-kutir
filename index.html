@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Urban Kutir delivers handcrafted luxury furniture and premium interior design solutions in Kolkata. Experience bespoke craftsmanship and timeless elegance." />
+    <title>Urban Kutir — Handcrafted Luxury Furniture & Interior Design</title>
+
+    <!-- Favicon (using the uploaded logo as a placeholder) -->
+    <link rel="icon" href="urbankutir.pmg" />
+
+    <!-- Google Fonts: Playfair Display + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,300&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ============================================================
+               DESIGN TOKENS & CSS VARIABLES
+               ============================================================ */
+        :root {
+            /* Primary palette – derived from the uploaded logo */
+            --color-primary: #3D2B1F;
+            --color-primary-dark: #1A1410;
+            --color-primary-light: #5C3F2E;
+            --color-secondary: #B8956A;
+            --color-secondary-light: #D4A87C;
+            --color-secondary-pale: #E8D5C0;
+            --color-accent: #C49A6C;
+
+            /* Neutrals */
+            --color-warm-white: #F8F4EF;
+            --color-cream: #F0EAE2;
+            --color-charcoal: #2C2420;
+            --color-stone: #6B5D55;
+            --color-stone-light: #9A8B82;
+            --color-border: #E5DDD6;
+
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(61, 43, 31, 0.60) 100%);
+            --gradient-gold: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary));
+            --gradient-warm: linear-gradient(135deg, var(--color-warm-white), var(--color-cream));
+
+            /* Typography */
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(26, 20, 16, 0.06);
+            --shadow-md: 0 8px 30px rgba(26, 20, 16, 0.10);
+            --shadow-lg: 0 20px 60px rgba(26, 20, 16, 0.15);
+            --shadow-xl: 0 40px 80px rgba(26, 20, 16, 0.20);
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+            --duration-smooth: 0.6s;
+            --duration-bounce: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ============================================================
+               RESET & BASE
+               ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-warm-white);
+            color: var(--color-charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--duration-smooth) var(--ease-out);
+        }
+        button {
+            cursor: pointer;
+            font-family: var(--font-body);
+            border: none;
+            background: none;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================================
+               UTILITY CLASSES
+               ============================================================ */
+        .section-padding {
+            padding: var(--space-xxl) 0;
+        }
+
+        .section-padding-sm {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .section-title--centered {
+            text-align: center;
+        }
+
+        .section-title--centered::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-gold);
+            margin: var(--space-md) auto 0;
+            border-radius: var(--radius-full);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--color-stone);
+            max-width: 640px;
+            margin: 0 auto var(--space-xl);
+            text-align: center;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .section-subtitle--left {
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .text-gold {
+            color: var(--color-secondary);
+        }
+        .text-gold-light {
+            color: var(--color-secondary-light);
+        }
+        .text-primary {
+            color: var(--color-primary);
+        }
+        .text-muted {
+            color: var(--color-stone);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all var(--duration-smooth) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(61, 43, 31, 0.25);
+        }
+        .btn--primary:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(61, 43, 31, 0.30);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        .btn--secondary:hover {
+            background: var(--color-primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .btn--gold {
+            background: var(--gradient-gold);
+            color: var(--color-primary-dark);
+            box-shadow: 0 4px 20px rgba(184, 149, 106, 0.35);
+        }
+        .btn--gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(184, 149, 106, 0.45);
+        }
+
+        .btn--white {
+            background: #fff;
+            color: var(--color-primary);
+        }
+        .btn--white:hover {
+            background: var(--color-cream);
+            transform: translateY(-3px);
+        }
+
+        .btn--outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .btn--outline-white:hover {
+            background: #fff;
+            color: var(--color-primary);
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+               SCROLL ANIMATIONS (reveal on scroll)
+               ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+        .reveal-delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ============================================================
+               TOP BAR
+               ============================================================ */
+        .top-bar {
+            background: var(--color-primary-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .top-bar__inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .top-bar__left {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .top-bar__left a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+        .top-bar__left a:hover {
+            color: var(--color-secondary-light);
+        }
+        .top-bar__left i {
+            font-size: 0.9rem;
+            color: var(--color-secondary-light);
+        }
+
+        .top-bar__right {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .top-bar__right .social-link {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        .top-bar__right .social-link:hover {
+            color: var(--color-secondary-light);
+        }
+
+        /* ============================================================
+               HEADER / NAVIGATION
+               ============================================================ */
+        .main-header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background var(--duration-smooth) var(--ease-out);
+        }
+
+        .main-header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(26, 20, 16, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            gap: var(--space-lg);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .logo__img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-secondary-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo__text {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+        .logo__text span {
+            color: var(--color-secondary);
+        }
+
+        .logo__tagline {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-stone);
+            font-weight: 500;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width var(--duration-smooth) var(--ease-out);
+        }
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--color-primary);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            padding: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ============================================================
+               HERO
+               ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--color-primary-dark);
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                /* subtle texture overlay */
+                radial-gradient(ellipse at 20% 50%, rgba(184, 149, 106, 0.15) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 50%, rgba(184, 149, 106, 0.08) 0%, transparent 60%),
+                var(--color-primary-dark);
+            /* We'll add a decorative pattern or use the logo as a hero image */
+        }
+
+        /* Decorative gold accent lines */
+        .hero__bg::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(184, 149, 106, 0.3), transparent);
+            transform: rotate(-8deg);
+        }
+        .hero__bg::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 3%;
+            width: 30%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(184, 149, 106, 0.2), transparent);
+            transform: rotate(12deg);
+        }
+
+        /* Large subtle logo watermark in background */
+        .hero__watermark {
+            position: absolute;
+            right: -5%;
+            bottom: -10%;
+            font-family: var(--font-heading);
+            font-size: clamp(12rem, 30vw, 28rem);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 0.1em;
+            pointer-events: none;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            padding: var(--space-xl) 0;
+            width: 100%;
+        }
+
+        .hero__content {
+            max-width: 600px;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(184, 149, 106, 0.15);
+            color: var(--color-secondary-light);
+            padding: 6px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--space-lg);
+            border: 1px solid rgba(184, 149, 106, 0.15);
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-md);
+        }
+        .hero__title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__tagline {
+            font-size: clamp(1rem, 1.2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 300;
+            max-width: 480px;
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero__stats {
+            display: flex;
+            gap: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero__stat h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            font-family: var(--font-heading);
+            letter-spacing: -0.02em;
+        }
+        .hero__stat h4 span {
+            color: var(--color-secondary-light);
+        }
+        .hero__stat p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .hero__visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero__visual-ring {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%, rgba(184, 149, 106, 0.12), transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero__visual-ring::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 149, 106, 0.15);
+            animation: pulse-ring 4s ease-in-out infinite;
+        }
+
+        .hero__visual-ring::after {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 149, 106, 0.06);
+            animation: pulse-ring 4s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes pulse-ring {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.5;
+            }
+        }
+
+        .hero__visual-logo {
+            width: 70%;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(184, 149, 106, 0.2);
+        }
+
+        /* ============================================================
+               ABOUT
+               ============================================================ */
+        .about {
+            background: var(--color-warm-white);
+        }
+
+        .about__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .about__image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: var(--color-cream);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect width="100" height="100" fill="%23f0eae2"/><text x="50" y="50" font-family="Playfair Display, serif" font-size="12" fill="%23c49a6c" text-anchor="middle" dominant-baseline="central">Urban Kutir</text></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about__content .section-title {
+            text-align: left;
+        }
+        .about__content .section-title::after {
+            margin: var(--space-md) 0 0 0;
+        }
+
+        .about__text {
+            color: var(--color-stone);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: var(--space-lg);
+        }
+
+        .about__signature {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            font-style: italic;
+            margin-top: var(--space-md);
+        }
+
+        .about__values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .about__value {
+            text-align: center;
+            padding: var(--space-lg) var(--space-md);
+            background: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration-smooth) var(--ease-out);
+        }
+        .about__value:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about__value i {
+            font-size: 2rem;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-sm);
+        }
+        .about__value h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+        .about__value p {
+            font-size: 0.9rem;
+            color: var(--color-stone);
+        }
+
+        /* ============================================================
+               SERVICES
+               ============================================================ */
+        .services {
+            background: #fff;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .service-card {
+            background: var(--color-warm-white);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            transition: all var(--duration-smooth) var(--ease-out);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--duration-smooth) var(--ease-out);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-secondary-pale);
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(184, 149, 106, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--color-stone);
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+               PORTFOLIO (Featured Projects)
+               ============================================================ */
+        .portfolio {
+            background: var(--color-cream);
+        }
+
+        .portfolio__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .portfolio__item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--color-primary-dark);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration-smooth) var(--ease-out);
+            cursor: pointer;
+        }
+        .portfolio__item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+            z-index: 2;
+        }
+
+        .portfolio__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out);
+        }
+        .portfolio__item:hover img {
+            transform: scale(1.06);
+        }
+
+        .portfolio__item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(26, 20, 16, 0.7) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--space-lg);
+            opacity: 0;
+            transition: opacity var(--duration-smooth) var(--ease-out);
+        }
+        .portfolio__item:hover .portfolio__item-overlay {
+            opacity: 1;
+        }
+
+        .portfolio__item-overlay h4 {
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+        .portfolio__item-overlay p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        /* Placeholder images – using colored backgrounds with labels */
+        .portfolio__item--placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-primary);
+            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .portfolio__item--placeholder:nth-child(2) {
+            background: var(--color-primary-light);
+        }
+        .portfolio__item--placeholder:nth-child(3) {
+            background: var(--color-charcoal);
+        }
+        .portfolio__item--placeholder:nth-child(4) {
+            background: #4a3729;
+        }
+        .portfolio__item--placeholder:nth-child(5) {
+            background: #2c241f;
+        }
+        .portfolio__item--placeholder:nth-child(6) {
+            background: var(--color-stone);
+        }
+
+        /* ============================================================
+               PROCESS
+               ============================================================ */
+        .process {
+            background: #fff;
+        }
+
+        .process__steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            position: relative;
+        }
+
+        .process__steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--color-border);
+            z-index: 0;
+        }
+
+        .process__step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process__step-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            color: var(--color-primary-dark);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            box-shadow: 0 8px 24px rgba(184, 149, 106, 0.25);
+        }
+
+        .process__step h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+        .process__step p {
+            font-size: 0.9rem;
+            color: var(--color-stone);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+               TESTIMONIALS
+               ============================================================ */
+        .testimonials {
+            background: var(--color-warm-white);
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration-smooth) var(--ease-out);
+            border: 1px solid var(--color-border);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-card__stars {
+            color: var(--color-secondary);
+            letter-spacing: 2px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-charcoal);
+            font-style: italic;
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .testimonial-card__author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-secondary-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .testimonial-card__author strong {
+            display: block;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        .testimonial-card__author span {
+            font-size: 0.85rem;
+            color: var(--color-stone);
+        }
+
+        /* ============================================================
+               WHY CHOOSE US
+               ============================================================ */
+        .why-choose {
+            background: var(--color-primary-dark);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(184, 149, 106, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .why-choose .section-title {
+            color: #fff;
+        }
+        .why-choose .section-title::after {
+            background: var(--gradient-gold);
+        }
+        .why-choose .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .why-choose__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-choose__item {
+            text-align: center;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all var(--duration-smooth) var(--ease-out);
+        }
+        .why-choose__item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .why-choose__item i {
+            font-size: 2.4rem;
+            color: var(--color-secondary-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .why-choose__item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        .why-choose__item p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+               GST INVOICE SYSTEM
+               ============================================================ */
+        .invoice-section {
+            background: var(--color-cream);
+        }
+
+        .invoice-section__wrapper {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-xl);
+        }
+
+        .invoice-section__header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+            gap: var(--space-md);
+        }
+
+        .invoice-section__header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-primary);
+        }
+        .invoice-section__header p {
+            color: var(--color-stone);
+            font-size: 0.95rem;
+        }
+
+        .invoice-section__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(184, 149, 106, 0.12);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            border: 1px solid rgba(184, 149, 106, 0.15);
+        }
+        .invoice-section__badge i {
+            font-size: 0.9rem;
+        }
+
+        .invoice-preview {
+            background: var(--color-warm-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            border: 1px solid var(--color-border);
+            margin-bottom: var(--space-lg);
+            font-size: 0.9rem;
+            color: var(--color-stone);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .invoice-preview__row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        .invoice-preview__row:last-child {
+            border-bottom: none;
+        }
+        .invoice-preview__label {
+            font-weight: 500;
+            color: var(--color-charcoal);
+        }
+        .invoice-preview__value {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .invoice-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .invoice-actions .btn {
+            padding: 12px 28px;
+            font-size: 0.9rem;
+        }
+
+        .invoice-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .invoice-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .invoice-form .form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+        }
+        .invoice-form .form-group input,
+        .invoice-form .form-group select {
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: border-color 0.3s ease;
+        }
+        .invoice-form .form-group input:focus,
+        .invoice-form .form-group select:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+        }
+        .invoice-form .form-group--full {
+            grid-column: 1 / -1;
+        }
+
+        /* ============================================================
+               CONTACT
+               ============================================================ */
+        .contact {
+            background: #fff;
+        }
+
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+
+        .contact__info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .contact__item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .contact__item:last-child {
+            border-bottom: none;
+        }
+
+        .contact__item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(184, 149, 106, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact__item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 2px;
+        }
+        .contact__item p,
+        .contact__item a {
+            color: var(--color-stone);
+            font-size: 0.95rem;
+        }
+        .contact__item a:hover {
+            color: var(--color-secondary);
+        }
+
+        .contact__form {
+            background: var(--color-warm-white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact__form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+        .contact__form p {
+            color: var(--color-stone);
+            margin-bottom: var(--space-lg);
+        }
+
+        .contact__form .form-group {
+            margin-bottom: var(--space-md);
+        }
+        .contact__form .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            margin-bottom: 4px;
+        }
+        .contact__form .form-group input,
+        .contact__form .form-group select,
+        .contact__form .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact__form .form-group input:focus,
+        .contact__form .form-group select:focus,
+        .contact__form .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 4px rgba(184, 149, 106, 0.1);
+        }
+        .contact__form .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact__form .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 16px;
+            font-size: 1rem;
+        }
+
+        .contact__map {
+            margin-top: var(--space-xl);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 280px;
+        }
+        .contact__map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ============================================================
+               FOOTER
+               ============================================================ */
+        .footer {
+            background: var(--color-primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer__brand .logo__img {
+            width: 56px;
+            height: 56px;
+            border-color: rgba(184, 149, 106, 0.3);
+        }
+        .footer__brand .logo__text {
+            color: #fff;
+        }
+        .footer__brand .logo__text span {
+            color: var(--color-secondary-light);
+        }
+        .footer__brand p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 320px;
+            margin-top: var(--space-md);
+        }
+
+        .footer__links h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: var(--space-md);
+        }
+
+        .footer__links ul li {
+            margin-bottom: 8px;
+        }
+        .footer__links ul li a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+        }
+        .footer__links ul li a:hover {
+            color: var(--color-secondary-light);
+        }
+
+        .footer__contact h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: var(--space-md);
+        }
+        .footer__contact a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        .footer__contact a:hover {
+            color: var(--color-secondary-light);
+        }
+        .footer__contact i {
+            width: 20px;
+            color: var(--color-secondary-light);
+        }
+
+        .footer__bottom {
+            padding-top: var(--space-lg);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-md);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer__bottom .footer__social {
+            display: flex;
+            gap: var(--space-md);
+        }
+        .footer__bottom .footer__social a {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .footer__bottom .footer__social a:hover {
+            color: var(--color-secondary-light);
+        }
+
+        /* ============================================================
+               WHATSAPP FLOAT
+               ============================================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all var(--duration-smooth) var(--ease-out);
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+        @media (max-width: 1024px) {
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero__content {
+                max-width: 100%;
+            }
+            .hero__tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero__actions {
+                justify-content: center;
+            }
+            .hero__stats {
+                justify-content: center;
+            }
+            .hero__visual {
+                margin-top: var(--space-lg);
+            }
+            .hero__visual-ring {
+                max-width: 320px;
+            }
+
+            .about__grid {
+                grid-template-columns: 1fr;
+            }
+            .about__content .section-title {
+                text-align: center;
+            }
+            .about__content .section-title::after {
+                margin: var(--space-md) auto 0;
+            }
+            .about__content .section-subtitle {
+                text-align: center;
+            }
+
+            .contact__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process__steps {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-xl) var(--space-lg);
+            }
+            .process__steps::before {
+                display: none;
+            }
+
+            .portfolio__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .invoice-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar__left {
+                gap: var(--space-md);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar__inner {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .top-bar__right {
+                gap: var(--space-sm);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: var(--space-md);
+                padding: var(--space-lg) 0;
+                width: 100%;
+                background: #fff;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid var(--color-border);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 8px 24px;
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .nav-links a.active {
+                background: var(--color-warm-white);
+            }
+            .nav-cta {
+                display: inline-flex;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: var(--space-xl) 0;
+            }
+            .hero__title {
+                font-size: 2.6rem;
+            }
+            .hero__stats {
+                flex-wrap: wrap;
+                gap: var(--space-lg);
+                justify-content: center;
+            }
+
+            .section-padding {
+                padding: var(--space-xl) 0;
+            }
+
+            .about__values {
+                grid-template-columns: 1fr;
+            }
+
+            .services__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .portfolio__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process__steps {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .testimonials__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .invoice-section__wrapper {
+                padding: var(--space-lg);
+            }
+
+            .contact__form {
+                padding: var(--space-lg);
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                font-size: 1.6rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .about__image {
+                aspect-ratio: 4/3;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services__grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio__grid {
+                grid-template-columns: 1fr;
+            }
+            .why-choose__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero__title {
+                font-size: 2rem;
+            }
+            .hero__visual-ring {
+                max-width: 220px;
+            }
+
+            .invoice-actions {
+                flex-direction: column;
+            }
+            .invoice-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================
+    TOP BAR
+    ============================================================ -->
+    <div class="top-bar">
+        <div class="container top-bar__inner">
+            <div class="top-bar__left">
+                <a href="tel:+919831859858"><i class="fas fa-phone"></i> +91 98318 59858</a>
+                <a href="mailto:urbankutir@gmail.com"><i class="fas fa-envelope"></i> urbankutir@gmail.com</a>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <span style="color: rgba(255,255,255,0.5); font-size:0.8rem;"><i class="fas fa-map-marker-alt" style="color:var(--color-secondary-light);"></i> Kolkata, WB</span>
+            </div>
+            <div class="top-bar__right">
+                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="main-header" id="mainHeader">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="urbankutir.pmg" alt="Urban Kutir logo" class="logo__img" />
+                <div>
+                    <div class="logo__text">Urban <span>Kutir</span></div>
+                    <span class="logo__tagline">Handcrafted Luxury</span>
+                </div>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-cta">
+                    <a href="#contact" class="btn btn--gold" style="padding: 8px 20px; font-size:0.85rem;">Consult Now</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="hero__bg"></div>
+        <div class="hero__watermark">Urban Kutir</div>
+
+        <div class="container hero__inner">
+            <div class="hero__content">
+                <div class="hero__badge"><i class="fas fa-crown" style="margin-right:6px;"></i> Bespoke Interiors</div>
+                <h1 class="hero__title">
+                    Handcrafted <br /><span class="highlight">Luxury</span> Furniture
+                </h1>
+                <p class="hero__tagline">
+                    Timeless design, meticulous craftsmanship, and a deep respect for material — we bring your dream home to life with elegance and precision.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn btn--gold">Start Your Project <i class="fas fa-arrow-right"></i></a>
+                    <a href="#portfolio" class="btn btn--outline-white">View Our Work</a>
+                </div>
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <h4>8<span>+</span></h4>
+                        <p>Years of Craftsmanship</p>
+                    </div>
+                    <div class="hero__stat">
+                        <h4>120<span>+</span></h4>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="hero__stat">
+                        <h4>100<span>%</span></h4>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <div class="hero__visual-ring">
+                    <img src="urbankutir.pmg" alt="Urban Kutir — Handcrafted Luxury Furniture" class="hero__visual-logo" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section class="section-padding about" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__image reveal">
+                    <!-- The uploaded logo serves as the primary visual reference -->
+                    <img src="urbankutir.pmg" alt="Urban Kutir craftsmanship" style="object-fit:cover; width:100%; height:100%; background: var(--color-cream);" />
+                </div>
+                <div class="about__content reveal reveal-delay-1">
+                    <span class="hero__badge" style="background: rgba(184,149,106,0.1); color: var(--color-secondary); border-color: rgba(184,149,106,0.15); margin-bottom: var(--space-sm);">About Us</span>
+                    <h2 class="section-title">Where Craftsmanship Meets <span class="text-gold">Elegance</span></h2>
+                    <p class="section-subtitle section-subtitle--left" style="margin-bottom: var(--space-md);">
+                        Urban Kutir is a Kolkata-based design studio dedicated to creating handcrafted luxury furniture and premium interior solutions.
+                    </p>
+                    <p class="about__text">
+                        We believe that a home is a reflection of the people who live in it. Every piece we create is thoughtfully designed, meticulously crafted, and finished with an uncompromising attention to detail. From modular kitchens to custom furniture, we bring warmth, sophistication, and timeless beauty to modern living spaces.
+                    </p>
+                    <p class="about__text">
+                        Our approach blends traditional Indian craftsmanship with contemporary design sensibilities, resulting in interiors that are both luxurious and deeply personal.
+                    </p>
+                    <div class="about__signature">— Urban Kutir</div>
+                </div>
+            </div>
+
+            <div class="about__values">
+                <div class="about__value reveal reveal-delay-1">
+                    <i class="fas fa-gem"></i>
+                    <h4>Premium Quality</h4>
+                    <p>Only the finest materials and finishes make it into our creations.</p>
+                </div>
+                <div class="about__value reveal reveal-delay-2">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h4>Bespoke Design</h4>
+                    <p>Every project is uniquely tailored to your vision and space.</p>
+                </div>
+                <div class="about__value reveal reveal-delay-3">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Trusted Partnership</h4>
+                    <p>We work closely with you from concept to completion, with transparency and care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SERVICES
+    ============================================================ -->
+    <section class="section-padding services" id="services">
+        <div class="container">
+            <h2 class="section-title section-title--centered">Our <span class="text-gold">Services</span></h2>
+            <p class="section-subtitle">Comprehensive interior solutions tailored to your lifestyle and aesthetic preferences.</p>
+
+            <div class="services__grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-card__icon"><i class="fas fa-couch"></i></div>
+                    <h3>Interior Design</h3>
+                    <p>Full-service interior design that balances aesthetics, function, and personality.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-card__icon"><i class="fas fa-kitchen-set"></i></div>
+                    <h3>Modular Kitchens</h3>
+                    <p>Intelligent, beautiful kitchens designed for the way you cook and live.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-card__icon"><i class="fas fa-chair"></i></div>
+                    <h3>Custom Furniture</h3>
+                    <p>One-of-a-kind pieces crafted to your exact specifications and style.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-4">
+                    <div class="service-card__icon"><i class="fas fa-border-all"></i></div>
+                    <h3>False Ceilings</h3>
+                    <p>Elegant ceiling designs that add depth, light, and architectural character.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-5">
+                    <div class="service-card__icon"><i class="fas fa-palette"></i></div>
+                    <h3>Wall Panels &amp; Louvers</h3>
+                    <p>Textured wall solutions that bring warmth and visual interest to any room.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-card__icon"><i class="fas fa-house-chimney"></i></div>
+                    <h3>Home Renovation</h3>
+                    <p>Transform existing spaces with thoughtful updates and refined finishes.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-card__icon"><i class="fas fa-arrows-spin"></i></div>
+                    <h3>Space Planning</h3>
+                    <p>Optimized layouts that maximize flow, light, and usability.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-card__icon"><i class="fas fa-key"></i></div>
+                    <h3>Turnkey Solutions</h3>
+                    <p>End-to-end project management from design to handover — stress-free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PORTFOLIO
+    ============================================================ -->
+    <section class="section-padding portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title section-title--centered">Featured <span class="text-gold">Projects</span></h2>
+            <p class="section-subtitle">A glimpse into the spaces we've transformed with care and creativity.</p>
+
+            <div class="portfolio__grid">
+                <div class="portfolio__item portfolio__item--placeholder reveal">Luxury Living Room</div>
+                <div class="portfolio__item portfolio__item--placeholder reveal reveal-delay-1">Modern Kitchen</div>
+                <div class="portfolio__item portfolio__item--placeholder reveal reveal-delay-2">Bedroom Retreat</div>
+                <div class="portfolio__item portfolio__item--placeholder reveal reveal-delay-3">Custom Study</div>
+                <div class="portfolio__item portfolio__item--placeholder reveal reveal-delay-4">Dining Ensemble</div>
+                <div class="portfolio__item portfolio__item--placeholder reveal reveal-delay-5">Full Home Project</div>
+            </div>
+            <!--
+            To add real project images, replace the placeholder divs above with:
+            <div class="portfolio__item">
+              <img src="project-1.jpg" alt="Project name" />
+              <div class="portfolio__item-overlay">
+                <h4>Project Name</h4>
+                <p>Interior Design · Kolkata</p>
+              </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PROCESS
+    ============================================================ -->
+    <section class="section-padding process" id="process">
+        <div class="container">
+            <h2 class="section-title section-title--centered">Our <span class="text-gold">Process</span></h2>
+            <p class="section-subtitle">A transparent, collaborative journey from concept to completion.</p>
+
+            <div class="process__steps">
+                <div class="process__step reveal reveal-delay-1">
+                    <div class="process__step-number">01</div>
+                    <h4>Discover</h4>
+                    <p>We listen to your vision, needs, and lifestyle to understand what matters most.</p>
+                </div>
+                <div class="process__step reveal reveal-delay-2">
+                    <div class="process__step-number">02</div>
+                    <h4>Design</h4>
+                    <p>Our team crafts concept designs, material palettes, and 3D visualizations.</p>
+                </div>
+                <div class="process__step reveal reveal-delay-3">
+                    <div class="process__step-number">03</div>
+                    <h4>Create</h4>
+                    <p>Skilled artisans bring the design to life with meticulous craftsmanship.</p>
+                </div>
+                <div class="process__step reveal reveal-delay-4">
+                    <div class="process__step-number">04</div>
+                    <h4>Install</h4>
+                    <p>We handle seamless installation with care, ensuring every detail is perfect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TESTIMONIALS
+    ============================================================ -->
+    <section class="section-padding testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title section-title--centered">What Our <span class="text-gold">Clients Say</span></h2>
+            <p class="section-subtitle">Real stories from people who trusted us with their homes.</p>
+
+            <div class="testimonials__grid">
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"Urban Kutir transformed our apartment into a space that feels both luxurious and warmly inviting. Their attention to detail is extraordinary."</blockquote>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__author-avatar">SM</div>
+                        <div><strong>S. Mukherjee</strong><span>Homeowner, Kolkata</span></div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"The custom furniture they built for our living room is the centerpiece of our home. Flawless craftsmanship and a pleasure to work with."</blockquote>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__author-avatar">RS</div>
+                        <div><strong>R. Sen</strong><span>Interior Designer</span></div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-3">
+                    <div class="testimonial-card__stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"From the initial consultation to the final handover, Urban Kutir made the entire process seamless. Our new kitchen is a dream come true."</blockquote>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__author-avatar">AD</div>
+                        <div><strong>A. Das</strong><span>Homeowner, Salt Lake</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    WHY CHOOSE US
+    ============================================================ -->
+    <section class="section-padding why-choose" id="why-choose">
+        <div class="container">
+            <h2 class="section-title section-title--centered">Why <span class="text-gold-light">Urban Kutir</span></h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">What sets us apart in the world of luxury interiors.</p>
+
+            <div class="why-choose__grid">
+                <div class="why-choose__item reveal reveal-delay-1">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h4>Artisanal Craftsmanship</h4>
+                    <p>Every piece is handcrafted with precision by skilled artisans who take pride in their work.</p>
+                </div>
+                <div class="why-choose__item reveal reveal-delay-2">
+                    <i class="fas fa-tree"></i>
+                    <h4>Premium Materials</h4>
+                    <p>We source only the finest woods, finishes, and fabrics for lasting beauty and durability.</p>
+                </div>
+                <div class="why-choose__item reveal reveal-delay-3">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h4>Tailored to You</h4>
+                    <p>No two projects are alike. Every design is custom-crafted to reflect your personal style.</p>
+                </div>
+                <div class="why-choose__item reveal reveal-delay-4">
+                    <i class="fas fa-clock"></i>
+                    <h4>On-Time Delivery</h4>
+                    <p>We respect your timeline and deliver excellence without unnecessary delays.</p>
+                </div>
+                <div class="why-choose__item reveal reveal-delay-5">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>GST Compliant</h4>
+                    <p>Professional invoicing with full tax compliance for your peace of mind.</p>
+                </div>
+                <div class="why-choose__item reveal reveal-delay-1">
+                    <i class="fas fa-heart"></i>
+                    <h4>Passion for Design</h4>
+                    <p>We love what we do, and it shows in every project we undertake.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    GST INVOICE SYSTEM
+    ============================================================ -->
+    <section class="section-padding invoice-section" id="invoice">
+        <div class="container">
+            <h2 class="section-title section-title--centered">GST <span class="text-gold">Invoice</span> Portal</h2>
+            <p class="section-subtitle">Generate, preview, and download GST-compliant invoices for your projects.</p>
+
+            <div class="invoice-section__wrapper reveal">
+                <div class="invoice-section__header">
+                    <div>
+                        <h3><i class="fas fa-file-invoice" style="color: var(--color-secondary); margin-right:10px;"></i> Tax Invoice</h3>
+                        <p style="color: var(--color-stone); font-size: 0.9rem;">Fill in the details below to generate a professional GST invoice.</p>
+                    </div>
+                    <div class="invoice-section__badge">
+                        <i class="fas fa-check-circle"></i> GSTIN: 19AAHFU6863E1ZR
+                    </div>
+                </div>
+
+                <!-- Invoice Preview -->
+                <div class="invoice-preview" id="invoicePreview">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                        <div>
+                            <strong style="font-size:1.1rem; color: var(--color-primary);">Urban Kutir</strong>
+                            <div style="font-size:0.8rem; color: var(--color-stone);">59 Kali Charan Ghosh Road, Binayak Enclave, Block J2, Flat 308, Kolkata – 700050</div>
+                            <div style="font-size:0.8rem; color: var(--color-stone);">GSTIN: 19AAHFU6863E1ZR | PAN: AAHFU6863E</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 600; color: var(--color-primary);">INVOICE</div>
+                            <div style="font-size:0.8rem; color: var(--color-stone);" id="invoiceNumberDisplay">#UK-2026-001</div>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md);">
+                        <div class="invoice-preview__row">
+                            <span class="invoice-preview__label">Customer</span>
+                            <span class="invoice-preview__value" id="previewCustomer">—</span>
+                        </div>
+                        <div class="invoice-preview__row">
+                            <span class="invoice-preview__label">Item / Service</span>
+                            <span class="invoice-preview__value" id="previewItem">—</span>
+                        </div>
+                        <div class="invoice-preview__row">
+                            <span class="invoice-preview__label">Amount (₹)</span>
+                            <span class="invoice-preview__value" id="previewAmount">—</span>
+                        </div>
+                        <div class="invoice-preview__row">
+                            <span class="invoice-preview__label">Date</span>
+                            <span class="invoice-preview__value" id="previewDate">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoice Form -->
+                <form class="invoice-form" id="invoiceForm">
+                    <div class="form-group">
+                        <label for="invCustomer">Customer Name</label>
+                        <input type="text" id="invCustomer" placeholder="e.g. A. Das" />
+                    </div>
+                    <div class="form-group">
+                        <label for="invItem">Item / Service Description</label>
+                        <input type="text" id="invItem" placeholder="e.g. Custom Wardrobe" />
+                    </div>
+                    <div class="form-group">
+                        <label for="invAmount">Amount (₹)</label>
+                        <input type="number" id="invAmount" placeholder="0" />
+                    </div>
+                    <div class="form-group">
+                        <label for="invDate">Date</label>
+                        <input type="date" id="invDate" />
+                    </div>
+                    <div class="form-group form-group--full" style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                        <button type="button" class="btn btn--primary" id="previewInvoiceBtn" style="flex:1;">
+                            <i class="fas fa-eye"></i> Preview Invoice
+                        </button>
+                        <button type="button" class="btn btn--gold" id="downloadInvoiceBtn" style="flex:1;">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button type="button" class="btn btn--secondary" id="printInvoiceBtn" style="flex:1;">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+    <section class="section-padding contact" id="contact">
+        <div class="container">
+            <h2 class="section-title section-title--centered">Let's <span class="text-gold">Collaborate</span></h2>
+            <p class="section-subtitle">Ready to transform your space? Reach out for a consultation or a tailored quote.</p>
+
+            <div class="contact__grid">
+                <div class="contact__info reveal">
+                    <div class="contact__item">
+                        <div class="contact__item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>59 Kali Charan Ghosh Road, Binayak Enclave,<br />Block J2, Flat 308, Kolkata – 700050</p>
+                            <a href="https://maps.google.com/maps?q=59+Kali+Charan+Ghosh+Road+Kolkata+700050" target="_blank" style="font-size:0.85rem; color: var(--color-secondary);">Open in Maps <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__item-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p><a href="tel:+919831859858">+91 98318 59858</a></p>
+                            <p style="font-size:0.85rem; color: var(--color-stone);">Mon–Sat, 10 AM – 7 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__item-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:urbankutir@gmail.com">urbankutir@gmail.com</a></p>
+                            <p style="font-size:0.85rem; color: var(--color-stone);">We respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="contact__item">
+                        <div class="contact__item-icon"><i class="fas fa-file-invoice"></i></div>
+                        <div>
+                            <h4>GST Details</h4>
+                            <p>GSTIN: 19AAHFU6863E1ZR</p>
+                            <p style="font-size:0.85rem; color: var(--color-stone);">PAN: AAHFU6863E</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: var(--space-md); margin-top: var(--space-md);">
+                        <a href="https://wa.me/919831859858?text=Hello%20Urban%20Kutir%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="btn btn--gold" style="padding:12px 28px;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="tel:+919831859858" class="btn btn--secondary" style="padding:12px 28px;">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact__form reveal reveal-delay-1">
+                    <h3>Request a Consultation</h3>
+                    <p>Tell us about your project, and we'll get back to you with a tailored proposal.</p>
+
+                    <form id="contactForm" onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <label for="contactName">Your Name *</label>
+                            <input type="text" id="contactName" required placeholder="e.g. Ananya Sen" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number *</label>
+                            <input type="tel" id="contactPhone" required placeholder="e.g. 98318 59858" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" placeholder="you@example.com" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactService">Service Interest</label>
+                            <select id="contactService">
+                                <option value="">Select a service</option>
+                                <option value="interior-design">Interior Design</option>
+                                <option value="modular-kitchen">Modular Kitchen</option>
+                                <option value="custom-furniture">Custom Furniture</option>
+                                <option value="false-ceiling">False Ceiling</option>
+                                <option value="wall-panels">Wall Panels & Louvers</option>
+                                <option value="renovation">Home Renovation</option>
+                                <option value="space-planning">Space Planning</option>
+                                <option value="turnkey">Turnkey Solution</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Project Details *</label>
+                            <textarea id="contactMessage" rows="4" required placeholder="Tell us about your space, style preferences, timeline, and any special requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--gold">
+                            <i class="fas fa-paper-plane"></i> Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Google Maps -->
+            <div class="contact__map reveal">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.711153674879!2d88.387682!3d22.551418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771e6b6b6b6b%3A0x6b6b6b6b6b6b6b6b!2s59%20Kali%20Charan%20Ghosh%20Rd%2C%20Kolkata%2C%20West%20Bengal%20700050!5e0!3m2!1sen!2sin!4v1700000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Urban Kutir location in Kolkata">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+FOOTER
+============================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <a href="#home" class="logo" style="gap:10px;">
+                    <img src="urbankutir.pmg" alt="Urban Kutir" class="logo__img" style="width:56px;height:56px;" />
+                    <div>
+                        <div class="logo__text" style="color:#fff;">Urban <span>Kutir</span></div>
+                        <span class="logo__tagline" style="color:rgba(255,255,255,0.5);">Handcrafted Luxury</span>
+                    </div>
+                </a>
+                <p style="margin-top: var(--space-md); color: rgba(255,255,255,0.6); max-width: 320px;">
+                    Premium interior design and handcrafted furniture solutions in Kolkata. Timeless elegance, meticulous craftsmanship.
+                </p>
+            </div>
+
+            <div class="footer__links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Interior Design</a></li>
+                    <li><a href="#services">Modular Kitchens</a></li>
+                    <li><a href="#services">Custom Furniture</a></li>
+                    <li><a href="#services">False Ceilings</a></li>
+                    <li><a href="#services">Wall Panels</a></li>
+                    <li><a href="#services">Turnkey Solutions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__contact">
+                <h4>Contact</h4>
+                <a href="tel:+919831859858"><i class="fas fa-phone"></i> +91 98318 59858</a>
+                <a href="mailto:urbankutir@gmail.com"><i class="fas fa-envelope"></i> urbankutir@gmail.com</a>
+                <a href="https://maps.google.com/maps?q=59+Kali+Charan+Ghosh+Road+Kolkata+700050" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> 59 Kali Charan Ghosh Rd,<br />&nbsp;&nbsp;&nbsp;&nbsp;Kolkata – 700050
+                </a>
+                <a href="#invoice"><i class="fas fa-file-invoice"></i> GST: 19AAHFU6863E1ZR</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <span>&copy; <span id="currentYear"></span> Urban Kutir. All rights reserved.</span>
+            <div class="footer__social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+WHATSAPP FLOAT
+============================================================ -->
+<a href="https://wa.me/919831859858?text=Hello%20Urban%20Kutir%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ============================================================
+JAVASCRIPT
+============================================================ -->
+<script>
+    // ============================================================
+    // 1. MOBILE NAV TOGGLE
+    // ============================================================
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            // update active state
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // ============================================================
+    // 2. HEADER SCROLL EFFECT
+    // ============================================================
+    const header = document.getElementById('mainHeader');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const current = window.scrollY;
+        if (current > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScroll = current;
+    });
+
+    // ============================================================
+    // 3. SMOOTH SCROLL + ACTIVE NAV
+    // ============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ============================================================
+    // 4. SCROLL REVEAL (Intersection Observer)
+    // ============================================================
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px'
+    });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ============================================================
+    // 5. CONTACT FORM
+    // ============================================================
+    function handleContactForm(event) {
+        event.preventDefault();
+        const form = event.target;
+        const name = document.getElementById('contactName').value.trim();
+        const phone = document.getElementById('contactPhone').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const service = document.getElementById('contactService').value;
+        const message = document.getElementById('contactMessage').value.trim();
+
+        const subject = `Urban Kutir Inquiry from ${name}`;
+        const body =
+            `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService Interest: ${service}\n\nMessage:\n${message}`;
+
+        window.open(
+            `mailto:urbankutir@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+            '_blank'
+        );
+
+        form.reset();
+        alert('Thank you! Your email client will open with a pre-filled inquiry. We\'ll respond within 24 hours.');
+    }
+
+    // ============================================================
+    // 6. GST INVOICE SYSTEM
+    // ============================================================
+    const previewBtn = document.getElementById('previewInvoiceBtn');
+    const downloadBtn = document.getElementById('downloadInvoiceBtn');
+    const printBtn = document.getElementById('printInvoiceBtn');
+
+    const invCustomer = document.getElementById('invCustomer');
+    const invItem = document.getElementById('invItem');
+    const invAmount = document.getElementById('invAmount');
+    const invDate = document.getElementById('invDate');
+
+    const previewCustomer = document.getElementById('previewCustomer');
+    const previewItem = document.getElementById('previewItem');
+    const previewAmount = document.getElementById('previewAmount');
+    const previewDate = document.getElementById('previewDate');
+    const invoiceNumberDisplay = document.getElementById('invoiceNumberDisplay');
+
+    // Set default date
+    const today = new Date().toISOString().split('T')[0];
+    invDate.value = today;
+
+    function generateInvoiceNumber() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const seq = String(Math.floor(Math.random() * 900) + 100);
+        return `UK-${year}-${month}${day}-${seq}`;
+    }
+
+    function updatePreview() {
+        const customer = invCustomer.value.trim() || '—';
+        const item = invItem.value.trim() || '—';
+        const amount = invAmount.value ? `₹${parseFloat(invAmount.value).toLocaleString('en-IN')}` : '—';
+        const date = invDate.value ? new Date(invDate.value).toLocaleDateString('en-IN', { day: 'numeric', month: 'short',
+                year: 'numeric' }) : '—';
+
+        previewCustomer.textContent = customer;
+        previewItem.textContent = item;
+        previewAmount.textContent = amount;
+        previewDate.textContent = date;
+        invoiceNumberDisplay.textContent = generateInvoiceNumber();
+    }
+
+    // Auto-update preview on input change
+    [invCustomer, invItem, invAmount, invDate].forEach(el => {
+        el.addEventListener('input', updatePreview);
+    });
+    invDate.addEventListener('change', updatePreview);
+
+    // Manual preview button
+    previewBtn.addEventListener('click', updatePreview);
+
+    // Download PDF (simulated – opens print dialog with invoice content)
+    downloadBtn.addEventListener('click', () => {
+        // In a real implementation, this would generate a PDF.
+        // For now, we simulate by printing the invoice preview.
+        alert(
+            'PDF download would generate a professional invoice. In a production environment, this would use a library like jsPDF or a server-side PDF generator.');
+        printInvoice();
+    });
+
+    // Print invoice
+    printBtn.addEventListener('click', printInvoice);
+
+    function printInvoice() {
+        const preview = document.getElementById('invoicePreview');
+        const win = window.open('', '_blank');
+        if (!win) {
+            alert('Please allow popups to print the invoice.');
+            return;
+        }
+
+        const content = preview.innerHTML;
+        win.document.write(`
+                <html>
+                <head>
+                    <title>Urban Kutir - Invoice</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Inter', sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; color: #2C2420; background: #fff; }
+                        .invoice-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #B8956A; padding-bottom: 20px; margin-bottom: 20px; }
+                        .invoice-header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #3D2B1F; }
+                        .invoice-header h1 span { color: #B8956A; }
+                        .invoice-details { margin-bottom: 20px; }
+                        .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #E5DDD6; }
+                        .label { font-weight: 500; color: #6B5D55; }
+                        .value { font-weight: 600; color: #3D2B1F; }
+                        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #E5DDD6; font-size: 0.85rem; color: #6B5D55; text-align: center; }
+                        .gst-badge { background: #f0eae2; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: #B8956A; }
+                    </style>
+                </head>
+                <body>
+                    <div class="invoice-header">
+                        <h1>Urban <span>Kutir</span></h1>
+                        <span class="gst-badge">GSTIN: 19AAHFU6863E1ZR</span>
+                    </div>
+                    <div class="invoice-details">
+                        ${content.replace(/id="invoicePreview"/, '')}
+                    </div>
+                    <div class="footer">
+                        <p>59 Kali Charan Ghosh Road, Binayak Enclave, Block J2, Flat 308, Kolkata – 700050</p>
+                        <p style="margin-top:4px;">Email: urbankutir@gmail.com | Phone: +91 98318 59858</p>
+                        <p style="margin-top:8px; font-size:0.75rem;">This is a system-generated GST-compliant invoice.</p>
+                    </div>
+                    <script>
+                        window.onload = function() { window.print(); }
+                    <\/script>
+                </body>
+                </html>
+            `);
+        win.document.close();
+    }
+
+    // Initial preview
+    updatePreview();
+
+    // ============================================================
+    // 7. FOOTER YEAR
+    // ============================================================
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ============================================================
+    // 8. WHATSAPP FLOAT - smooth appearance
+    // ============================================================
+    // (already styled)
+    console.log('Urban Kutir — Handcrafted Luxury Furniture');
+</script>
+</body>
+</html>
